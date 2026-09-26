@@ -1,0 +1,28 @@
+# ================= Qt 构建产物 =================
+build/
+build-*/
+debug/
+release/
+Makefile
+Makefile.*
+.qmake.stash
+*_resource.rc
+moc_*.cpp
+moc_*.h
+qrc_*.cpp
+ui_*.h
+*.o
+*.obj
+*.exe
+
+# ================= Qt Creator / IDE 配置 =================
+*.pro.user
+*.pro.user.*
+.qtcreator/
+*.autosave
+
+# ================= 系统与编辑器临时文件 =================
+Thumbs.db
+Desktop.ini
+*.swp
+*~

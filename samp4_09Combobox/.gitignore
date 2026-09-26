@@ -1,0 +1,41 @@
+# Qt Creator user settings
+*.user
+*.user.*
+*.autosave
+CMakeLists.txt.user*
+
+# CMake and Qt build output
+build/
+build-*/
+cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+compile_commands.json
+Makefile
+
+# Compiled files
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dll
+*.dylib
+*.exe
+*.app/
+debug/
+release/
+
+# IDE and operating-system files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.log
+*~
+__pycache__/
+*.py[cod]
