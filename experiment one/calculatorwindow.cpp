@@ -223,7 +223,7 @@ void CalculatorWindow::keyPressEvent(QKeyEvent *event)
         enterOperator('*');
     } else if (key >= Qt::Key_0 && key <= Qt::Key_9) {
         enterDigit(key - Qt::Key_0);
-    } else if (key == Qt::Key_Period || key == Qt::Key_Comma || key == Qt::Key_Decimal) {
+    } else if (key == Qt::Key_Period || key == Qt::Key_Comma) {
         inputDecimalPoint();
     } else if (key == Qt::Key_Plus) {
         enterOperator('+');
