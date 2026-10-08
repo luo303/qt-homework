@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CalculatorWindow</class>
+ <widget class="QMainWindow" name="CalculatorWindow">
+  <property name="windowTitle"><string>计算器</string></property>
+  <property name="minimumSize"><size><width>320</width><height>460</height></size></property>
+  <property name="maximumSize"><size><width>420</width><height>620</height></size></property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow { background: #f4f6f8; }
+QLabel#displayLabel { color: #17212b; background: transparent; padding: 10px 8px; }
+QPushButton { background: #ffffff; color: #17212b; border: 1px solid #e3e8ed; border-radius: 10px; font-size: 20px; }
+QPushButton:hover { background: #edf4fa; }
+QPushButton:pressed { background: #dceaf5; }
+QPushButton[role="operator"] { color: #0878c9; background: #e9f4fc; font-size: 23px; }
+QPushButton[role="utility"] { color: #536273; background: #e9edf1; font-size: 16px; }
+QPushButton#equalsButton { color: white; background: #0878c9; border: none; font-size: 24px; }
+QPushButton#equalsButton:hover { background: #0669b1; }
+QPushButton#equalsButton:pressed { background: #055a99; }</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="leftMargin"><number>16</number></property>
+    <property name="topMargin"><number>18</number></property>
+    <property name="rightMargin"><number>16</number></property>
+    <property name="bottomMargin"><number>16</number></property>
+    <property name="spacing"><number>12</number></property>
+    <item>
+     <widget class="QLabel" name="displayLabel">
+      <property name="minimumSize"><size><width>0</width><height>104</height></size></property>
+      <property name="text"><string>0</string></property>
+      <property name="alignment"><set>Qt::AlignRight|Qt::AlignVCenter</set></property>
+      <property name="wordWrap"><bool>false</bool></property>
+      <property name="textInteractionFlags"><set>Qt::NoTextInteraction</set></property>
+      <property name="styleSheet"><string notr="true">font-size: 38px; font-weight: 500;</string></property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QGridLayout" name="buttonGrid">
+      <property name="spacing"><number>8</number></property>
+      <item row="0" column="0"><widget class="QPushButton" name="clearEntryButton"><property name="text"><string>CE</string></property><property name="role" stdset="0"><string>utility</string></property></widget></item>
+      <item row="0" column="1"><widget class="QPushButton" name="clearButton"><property name="text"><string>C</string></property><property name="role" stdset="0"><string>utility</string></property></widget></item>
+      <item row="0" column="2"><widget class="QPushButton" name="backspaceButton"><property name="text"><string>⌫</string></property><property name="role" stdset="0"><string>utility</string></property></widget></item>
+      <item row="0" column="3"><widget class="QPushButton" name="divideButton"><property name="text"><string>÷</string></property><property name="role" stdset="0"><string>operator</string></property></widget></item>
+      <item row="1" column="0"><widget class="QPushButton" name="digit7Button"><property name="text"><string>7</string></property></widget></item>
+      <item row="1" column="1"><widget class="QPushButton" name="digit8Button"><property name="text"><string>8</string></property></widget></item>
+      <item row="1" column="2"><widget class="QPushButton" name="digit9Button"><property name="text"><string>9</string></property></widget></item>
+      <item row="1" column="3"><widget class="QPushButton" name="multiplyButton"><property name="text"><string>×</string></property><property name="role" stdset="0"><string>operator</string></property></widget></item>
+      <item row="2" column="0"><widget class="QPushButton" name="digit4Button"><property name="text"><string>4</string></property></widget></item>
+      <item row="2" column="1"><widget class="QPushButton" name="digit5Button"><property name="text"><string>5</string></property></widget></item>
+      <item row="2" column="2"><widget class="QPushButton" name="digit6Button"><property name="text"><string>6</string></property></widget></item>
+      <item row="2" column="3"><widget class="QPushButton" name="subtractButton"><property name="text"><string>−</string></property><property name="role" stdset="0"><string>operator</string></property></widget></item>
+      <item row="3" column="0"><widget class="QPushButton" name="digit1Button"><property name="text"><string>1</string></property></widget></item>
+      <item row="3" column="1"><widget class="QPushButton" name="digit2Button"><property name="text"><string>2</string></property></widget></item>
+      <item row="3" column="2"><widget class="QPushButton" name="digit3Button"><property name="text"><string>3</string></property></widget></item>
+      <item row="3" column="3"><widget class="QPushButton" name="addButton"><property name="text"><string>+</string></property><property name="role" stdset="0"><string>operator</string></property></widget></item>
+      <item row="4" column="0"><widget class="QPushButton" name="signButton"><property name="text"><string>±</string></property><property name="role" stdset="0"><string>utility</string></property></widget></item>
+      <item row="4" column="1"><widget class="QPushButton" name="digit0Button"><property name="text"><string>0</string></property></widget></item>
+      <item row="4" column="2"><widget class="QPushButton" name="decimalButton"><property name="text"><string>.</string></property></widget></item>
+      <item row="4" column="3"><widget class="QPushButton" name="equalsButton"><property name="text"><string>=</string></property></widget></item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
