@@ -39,7 +39,9 @@ private:
     void enterOperator(QChar operation);
 
     Ui::CalculatorWindow *ui;
-    double storedValue = 0.0;
+    double storedValue = 0.0; // 已完成的加减部分
+    double currentTerm = 0.0; // 当前乘除项
+    int currentTermSign = 1;
     QChar pendingOperator;
     bool waitingForOperand = true;
     bool justEvaluated = false;

@@ -90,46 +90,51 @@ void CalculatorWindow::enterOperator(QChar operation)
     if (!ok)
         return;
 
-    // A second operator replaces the pending one; otherwise finish the chain now.
-    if (!pendingOperator.isNull() && !waitingForOperand) {
+    // A new operator completes the preceding operation. Multiplication and
+    // division stay in the current term; addition and subtraction finish it.
+    if (pendingOperator.isNull()) {
+        storedValue = 0.0;
+        currentTerm = currentValue;
+        currentTermSign = 1;
+    } else if (!waitingForOperand) {
         if (!applyPendingOperation(currentValue))
             return;
-    } else if (pendingOperator.isNull()) {
-        storedValue = currentValue;
     }
 
     pendingOperator = operation;
     waitingForOperand = true;
     justEvaluated = false;
+
+    const double preview = storedValue + currentTermSign * currentTerm;
+    if (std::isfinite(preview))
+        ui->displayLabel->setText(QString::number(preview, 'g', 15));
 }
 
 bool CalculatorWindow::applyPendingOperation(double rightOperand)
 {
-    double result = storedValue;
     switch (pendingOperator.toLatin1()) {
-    case '+': result += rightOperand; break;
-    case '-': result -= rightOperand; break;
-    case '*': result *= rightOperand; break;
+    case '+':
+    case '-':
+        storedValue += currentTermSign * currentTerm;
+        currentTerm = rightOperand;
+        currentTermSign = pendingOperator == QLatin1Char('+') ? 1 : -1;
+        break;
+    case '*': currentTerm *= rightOperand; break;
     case '/':
         if (rightOperand == 0.0) {
             showError("除数不能为 0");
             return false;
         }
-        result /= rightOperand;
+        currentTerm /= rightOperand;
         break;
     default:
         return false;
     }
 
-    if (!std::isfinite(result)) {
+    if (!std::isfinite(storedValue) || !std::isfinite(currentTerm)) {
         showError("结果超出范围");
         return false;
     }
-
-    storedValue = result;
-    // 15 significant digits are enough for a readable double result and remove
-    // the usual binary floating point tail from decimal calculations.
-    ui->displayLabel->setText(QString::number(result, 'g', 15));
     return true;
 }
 
@@ -143,6 +148,19 @@ void CalculatorWindow::calculateResult()
     if (!ok || !applyPendingOperation(rightOperand))
         return;
 
+    const double result = storedValue + currentTermSign * currentTerm;
+    if (!std::isfinite(result)) {
+        showError("结果超出范围");
+        return;
+    }
+
+    // 15 significant digits keep the result readable without the common
+    // floating point tail from decimal calculations.
+    ui->displayLabel->setText(QString::number(result, 'g', 15));
+
+    storedValue = 0.0;
+    currentTerm = 0.0;
+    currentTermSign = 1;
     pendingOperator = QChar();
     waitingForOperand = true;
     justEvaluated = true;
@@ -177,6 +195,8 @@ void CalculatorWindow::clearEntry()
 void CalculatorWindow::clearAll()
 {
     storedValue = 0.0;
+    currentTerm = 0.0;
+    currentTermSign = 1;
     pendingOperator = QChar();
     waitingForOperand = true;
     justEvaluated = false;
