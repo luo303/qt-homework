@@ -7,8 +7,8 @@
 namespace AppInfo {
 
 inline QString appName()        { return QStringLiteral("简易文本编辑器"); }
-inline QString developer()      { return QStringLiteral("姓　名"); }
-inline QString studentId()      { return QStringLiteral("学　号"); }
+inline QString developer()      { return QStringLiteral("罗棕辉"); }
+inline QString studentId()      { return QStringLiteral("2024414290230"); }
 inline QString email()          { return QStringLiteral("email@example.com"); }
 inline QString version()        { return QStringLiteral("V1.0 build 202610"); }
 
